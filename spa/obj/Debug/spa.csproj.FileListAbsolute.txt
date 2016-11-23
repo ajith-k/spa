@@ -1,0 +1,13 @@
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\Interop.SystemMonitor.dll
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\AxInterop.SystemMonitor.dll
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\spa.csproj.ResolveComReference.cache
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\spa.exe
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\spa.pdb
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\bin\Debug\spa.exe
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\bin\Debug\spa.pdb
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\bin\Debug\Interop.SystemMonitor.dll
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\bin\Debug\AxInterop.SystemMonitor.dll
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\spa.frmSPA.resources
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\spa.Properties.Resources.resources
+C:\Users\ajithkr\Documents\Visual Studio 10\Projects\spa\spa\obj\Debug\spa.csproj.GenerateResource.Cache
