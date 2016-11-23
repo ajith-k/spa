@@ -347,7 +347,7 @@ namespace spa
                         + "\r\n========================="
                         + "\r\n File(s) : ";
                     for(int logIter = 1 ; logIter <= this.sysmon.LogFiles.Count; logIter++)
-                        strTemp += "\r\n      " + this.sysmon.LogFiles[logIter].Path;//.Replace(@"\\blritgfsa01\ds\Engine\","").Replace(@"\\dsdb\pss\",""); 
+                        strTemp += "\r\n      " + this.sysmon.LogFiles[logIter].Path; 
                     strTemp += "\r\n Capture Start Time : " + this.sysmon.LogViewStart.ToString("yyyy-MM-dd HH:mm:ss")
                         + "\r\n Capture Stop Time  : " + this.sysmon.LogViewStop.ToString("yyyy-MM-dd HH:mm:ss")
                         + "\r\n Capture Duration   : " + this.sysmon.LogViewStop.Subtract(this.sysmon.LogViewStart).ToString()
@@ -447,7 +447,7 @@ namespace spa
                         + "\r\n========================="
                         + "\r\n File(s) : ";
                     for (int logIter = 1; logIter <= this.sysmon.LogFiles.Count; logIter++)
-                        strHeader += "\r\n      " + this.sysmon.LogFiles[logIter].Path;//.Replace(@"\\blritgfsa01\ds\Engine\","").Replace(@"\\dsdb\pss\",""); 
+                        strHeader += "\r\n      " + this.sysmon.LogFiles[logIter].Path; 
                     strHeader += "\r\n Capture Start Time : " + this.sysmon.LogViewStart.ToString("yyyy-MM-dd HH:mm:ss")
                         + "\r\n Capture Stop Time  : " + this.sysmon.LogViewStop.ToString("yyyy-MM-dd HH:mm:ss")
                         + "\r\n Capture Duration   : " + this.sysmon.LogViewStop.Subtract(this.sysmon.LogViewStart).ToString()

@@ -8,12 +8,12 @@ That said, this tool can be useful to anyone who has to analyze any performance 
 
 Once built you will need the following 4 files to allow the application to work.
 
-AxInterop.SystemMonitor.dll
-Interop.SystemMonitor.dll
-spa.exe
-spa.xml [optional]
+  AxInterop.SystemMonitor.dll
+  Interop.SystemMonitor.dll
+  spa.exe
+  spa.xml
 
 
-The spa.xml file is a human readable (and editable) list of counter groups that can be added as a bunch. A default spa.xml will be created if it doesnt already exist in the current path when spa.exe runs.
+The spa.xml file is a human readable (and editable) list of counter groups that can be added as a bunch. 
 
 Comments and feedback welcome!
