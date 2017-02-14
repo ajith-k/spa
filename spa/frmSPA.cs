@@ -728,6 +728,7 @@ namespace spa
       
         private void tmrDurRefresh_Tick(object sender, EventArgs e)
         {
+            CheckSysmonSource();
             String strLogView;
             try
             {
@@ -749,6 +750,30 @@ namespace spa
                 this.tspbarProgress.Value = 0;
         }
 
+        private void CheckSysmonSource()
+        {
+            var unfilteredFileNames = sysmon.LogFileName.Replace("\0", ",").Split(',');
+            var filtered = new List<string>();
+            foreach (var name in unfilteredFileNames)
+            {
+                if (!string.IsNullOrEmpty(name)) filtered.Add(name);
+            }
+            var fileNames = filtered.ToArray();
+            if (fileNames.Length == 0 || ((tbPFile.Lines.Length <= 0 || fileNames[0] == tbPFile.Lines[0]) 
+                && tbPFile.Lines.Length != 0)) return;
+            var line = new List<string>();
+            foreach (string files in tbPFile.Lines)
+            {
+                line.Add(files);
+            }
+            foreach (var fileName in fileNames)
+            {
+                line.Add(fileName);
+            }
+            tbPFile.Lines = line.ToArray();
+            EnumMachines();
+        }
+
         private void btnPFile_Click(object sender, EventArgs e)
         {
             tslblDoingWhat.Text = "Adding Perfmon File..";
@@ -758,18 +783,21 @@ namespace spa
             tbPFile.Lines = dlgOPFile.FileNames;
             if (tbPFile.Lines.Length > 0)
             {
-                tslblDoingWhat.Text = "Enumerating computer names in file...";
-
-                this.tspbarProgress.Value = 10;
-
-                if (System.IO.File.Exists(tbPFile.Lines[0]))
-                {
-                    this.bgWrkr.RunWorkerAsync("Enum_Machines");
-                }
-                else
-                    showExBox(new FileNotFoundException(),
-                        "Performance counter file '" + tbPFile.Text + "' does not exist!!");
+                EnumMachines();
             }
+        }
+
+        private void EnumMachines()
+        {
+            tslblDoingWhat.Text = "Enumerating computer names in file...";
+            this.tspbarProgress.Value = 10;
+            if (System.IO.File.Exists(tbPFile.Lines[0]))
+            {
+                this.bgWrkr.RunWorkerAsync("Enum_Machines");
+            }
+            else
+                showExBox(new FileNotFoundException(),
+                    "Performance counter file '" + tbPFile.Text + "' does not exist!!");
 
         }
 
@@ -779,6 +807,7 @@ namespace spa
             if (string.IsNullOrEmpty(tbPFile.Text))
             {
                 MessageBox.Show(@"Please select a perfmon file before adding counters.",@"Missing Perfmon File", MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                this.btnCtrAdd.Enabled = true;
             }
             else
             {
@@ -787,8 +816,12 @@ namespace spa
                     this.bgWrkr.RunWorkerAsync("Add_Counter");
                 }
                 else
+                {
                     showExBox(new FileNotFoundException(),
                         "Performance counter file '" + tbPFile.Text + "' does not exist!!");
+                    this.btnCtrAdd.Enabled = true;
+                }
+
             }
         }
 
