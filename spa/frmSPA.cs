@@ -756,28 +756,40 @@ namespace spa
             dlgOPFile.ShowDialog();
             tbPFile.Text = "";
             tbPFile.Lines = dlgOPFile.FileNames;
-            tslblDoingWhat.Text = "Enumerating computer names in file...";
-
-            this.tspbarProgress.Value = 10;
-
-            if (System.IO.File.Exists(tbPFile.Lines[0]))
+            if (tbPFile.Lines.Length > 0)
             {
-                this.bgWrkr.RunWorkerAsync("Enum_Machines");
+                tslblDoingWhat.Text = "Enumerating computer names in file...";
+
+                this.tspbarProgress.Value = 10;
+
+                if (System.IO.File.Exists(tbPFile.Lines[0]))
+                {
+                    this.bgWrkr.RunWorkerAsync("Enum_Machines");
+                }
+                else
+                    showExBox(new FileNotFoundException(),
+                        "Performance counter file '" + tbPFile.Text + "' does not exist!!");
             }
-            else
-                showExBox(new FileNotFoundException(), "Performance counter file '" + tbPFile.Text + "' does not exist!!");
 
         }
 
         private void btnCtrAdd_Click(object sender, EventArgs e)
         {
             this.btnCtrAdd.Enabled = false;
-            if (System.IO.File.Exists(tbPFile.Lines[0]))
+            if (string.IsNullOrEmpty(tbPFile.Text))
             {
-                this.bgWrkr.RunWorkerAsync("Add_Counter");
+                MessageBox.Show(@"Please select a perfmon file before adding counters.",@"Missing Perfmon File", MessageBoxButtons.OK,MessageBoxIcon.Stop);
             }
             else
-                showExBox(new FileNotFoundException(), "Performance counter file '" + tbPFile.Text + "' does not exist!!");
+            {
+                if (System.IO.File.Exists(tbPFile.Lines[0]))
+                {
+                    this.bgWrkr.RunWorkerAsync("Add_Counter");
+                }
+                else
+                    showExBox(new FileNotFoundException(),
+                        "Performance counter file '" + tbPFile.Text + "' does not exist!!");
+            }
         }
 
         private void btnC2C_Click(object sender, EventArgs e)
